@@ -4,7 +4,9 @@
 #include "pch.h"
 #include <iostream>
 
-void DoubleTheArrayValues(int numbers[], int size);
+void DoubleTheArrayValues(int* pInteger, int size);
+void DoubleTheArrayValues(int* pInteger);
+void ChangeVariable(int* integer);
 
 int main()
 {
@@ -23,14 +25,32 @@ int main()
     for (int i{}; i < size; ++i) {
         std::cout << numbers[i] << "\n";
     }
-    DoubleTheArrayValues(numbers, size);
+    DoubleTheArrayValues(numbers);
     std::cout << numbers << "\n";
+
+    //Pointers
+    std::cout << number1 << " The address of number1 is " << &number1 << "\n";
+    ChangeVariable(&number1);
+    std::cout << number1 << " The address of number1 is " << &number1 << "\n\n";
+    DoubleTheArrayValues(numbers, size);
 }
 
-void DoubleTheArrayValues(int numbers[], int size) {
+void DoubleTheArrayValues(int* pInteger) {
+    std::cout << pInteger << "\n";
+}
+
+void DoubleTheArrayValues(int* pInteger, int size) {
     for (int i{}; i < size; ++i) {
-        
+        std::cout << pInteger[i] << "\n";
     }
+
+    std::cout << "\n" << *(pInteger + 0) << pInteger[0];
+    std::cout << "\n" << *(pInteger + 1) << pInteger[1];
+    std::cout << "\n" << *(pInteger + 2) << pInteger[2];
+}
+
+void ChangeVariable(int* pInteger) {
+    *pInteger = (*pInteger) * 2;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
